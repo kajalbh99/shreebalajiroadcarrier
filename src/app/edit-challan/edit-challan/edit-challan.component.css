@@ -1,0 +1,14 @@
+.card-body.w{
+    width: 77%;
+}
+.tag-msg{
+    color:red;
+    margin-top:2%;
+    display:block;
+}
+.card {
+    margin-bottom: 0px;
+}
+form{
+    height: 540px;
+}

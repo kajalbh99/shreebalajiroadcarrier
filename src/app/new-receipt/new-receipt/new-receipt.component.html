@@ -1,0 +1,139 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
+<div class="page-wrapper">
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title"></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <form [formGroup]="myform" (ngSubmit)="onSubmit()" class="form-horizontal">
+                            	<div class="col-sm-4 floatL" >
+                                <div class="card-body mrg">
+                                    <h4 class="card-title">Enter Details</h4>
+                                    <div class="form-group row">
+                                        <label for="lname" class="col-sm-4 text-right control-label col-form-label">Receipt No<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input type="text" [readonly]= "true" formControlName="receipt_no"  class="form-control" id="receipt_no" placeholder="Receipt No Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="received_from" class="col-sm-4 text-right control-label col-form-label">Received From</label>
+                                        <div class="col-sm-6">
+                                            <input formControlName="received_from"  type="text" class="form-control" id="received_from" placeholder="Received From Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="lname" class="col-sm-4 text-right control-label col-form-label">Date<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <my-date-picker [placeholder]="placeholder" class="form__input" formControlName="date" [(ngModel)]="model" [options]="myDatePickerOptions" ></my-date-picker>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="cono1" class="col-sm-4 text-right control-label col-form-label">G. R. No</label>
+                                        <div class="col-sm-6">
+                                          <input formControlName="gr_no"  type="text" class="form-control" id="gr_no" placeholder="G. R. No Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="email1" class="col-sm-4 text-right control-label col-form-label">No of packages</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" formControlName="pkgs"  class="form-control" id="pkgs" placeholder="No of Packages Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label for="email1" class="col-sm-4 text-right control-label col-form-label">Contents</label>
+                                      <div class="col-sm-6">
+                                          <input type="text" formControlName="packing"  class="form-control" id="packing" placeholder="Contents Here">
+                                      </div>
+                                  </div>
+                                    <div class="form-group row">
+                                      <label for="email1" class="col-sm-4 text-right control-label col-form-label">Station From</label>
+                                      <div class="col-sm-6">
+                                          <input type="text" formControlName="station_from"  class="form-control" id="station_from" placeholder="Station From Here">
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="email1" class="col-sm-4 text-right control-label col-form-label">Private Mark</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" formControlName="private_mark"  class="form-control" id="private_mark" placeholder="Private Mark Here">
+                                    </div>
+                                </div>
+                                </div>
+                                </div>
+                                <div class="col-sm-6 floatL" >
+                                  <div class="card-body">
+                                    <div class="form-group row">
+                                      <label for="email1" class="col-sm-4 text-right control-label col-form-label">To Pay</label>
+                                      <div class="col-sm-6">
+                                          <input type="text" formControlName="frieght"  class="form-control" id="freight" placeholder="To Pay Here">
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label for="email1" class="col-sm-4 text-right control-label col-form-label">Hamali</label>
+                                      <div class="col-sm-6">
+                                          <input type="text" formControlName="hamali"  class="form-control" id="hamali" placeholder="Hamali Here">
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label for="email1" class="col-sm-4 text-right control-label col-form-label">D/ Comm</label>
+                                      <div class="col-sm-6">
+                                          <input type="text" formControlName="d_charges"  class="form-control" id="d_charges" placeholder="D/ Comm Here">
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label for="email1" class="col-sm-4 text-right control-label col-form-label">Door Delivery</label>
+                                      <div class="col-sm-6">
+                                          <input type="text" formControlName="demmurage"  class="form-control" id="demmurage" placeholder="Door Delivery Here">
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label for="email1" class="col-sm-4 text-right control-label col-form-label">Damrge</label>
+                                      <div class="col-sm-6">
+                                          <input type="text" formControlName="cf_charges"  class="form-control" id="cf_charges" placeholder="Damrge Here">
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label for="email1" class="col-sm-4 text-right control-label col-form-label">GST@</label>
+                                      <div class="col-sm-6">
+                                          <input type="text" formControlName="gst"  class="form-control" id="gst" placeholder="GST@ Here">
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label for="email1" class="col-sm-4 text-right control-label col-form-label">Total</label>
+                                      <div class="col-sm-6">
+                                          <input type="text" [readonly]= "true" formControlName="total"  class="form-control" id="total" placeholder="Total Here">
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label for="email1" class="col-sm-4 text-right control-label col-form-label">Rs.</label>
+                                      <div class="col-sm-6">
+                                          <input type="text" [readonly]= "true" formControlName="rupees"  class="form-control" id="rupees" placeholder="Rs Here">
+                                      </div>
+                                    </div>
+                                    <div class="card-body w text-right">
+                                        <button  [disabled]="!myform.valid" type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div *ngIf="error" class="err">
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Error! </strong> {{error}}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="copyr">&copy; shreebalajiroadservice.in | <i class="fas fa-envelope"></i> dufferscreation@gmail.com |  <i style="transform: rotate(90deg);"class="fas fa-phone"></i>&nbsp;895-079-8100  </div>
+

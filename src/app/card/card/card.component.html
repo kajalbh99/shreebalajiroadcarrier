@@ -1,0 +1,133 @@
+
+<div id="content" #content>    
+  <div class="hand" >  
+    <input type="button" value="Download" (click)="captureScreen()"/>  
+  </div>    
+</div>
+<div id="contentToConvert">
+  <div class="div-wrap">
+   <div class="header-wrap">
+    <div class="row heder">
+      <div class="col-sm-3">GSTIN:06BDXPK2877A1ZA<br>PAN:BDXPK2877A </div>
+      <div class="col-sm-3 text-center">॥ श्री गणेशाय नमः ॥</div>
+      <div class="col-sm-3">॥ जय बजरंग बली ॥</div>
+      <div class="col-sm-3">H.O. Panipat : 99963-68787<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 94664-56285</div>
+    </div>
+    <div class="row heder2">
+      <!-- <div class="col-sm-4">
+        <span>GSTIN No. 06APQPK6935B1ZS</span>
+      </div> -->
+      <div class="col-sm-2"><img class="t1" src="assets/images/BALAGIB.png" alt="logo" /></div>
+      <div class="col-sm-10 title-wrap ">
+        <div><span class="title">SHREE BALAJI ROAD CARRIER</span></div>
+        <div class="row">
+          <div class="col-sm-8 lm">
+            <span>H.O. : </span>Swastika Road, Pipal wali gali, Panipat-132103<br>
+            <span>B.O. : </span>E-27, Transport Nagar, Bhilwara | Mob. 9462717887<br>
+            <span>Ph. No : 0180-4089659</span><br>
+            <b class="jud">Subject to Panipat judicial only</b>
+          </div>
+          <div class="col-sm-4 tt text-right">
+              <span class="risk ">At Owner Risk</span><br>
+              <span class="l1">Billti No. - {{bill.bill_no}}</span><br>
+              <span>Invoice No. - {{bill.invoice_no}}</span><br>
+              <span>Invoice Date. - {{bill.date | date}}</span>
+          </div>    
+        </div>
+        
+      </div>
+      <!-- <div class="col-sm-4 text-right">
+        <div class="gst">
+          <span>GSTIN No. 06APQPK6935B1ZS</span>
+        </div>
+        <!-- <img src="assets/images/phone.png"> -->
+        <!--<span>Contact Details :</span>
+        <span>99963-68787</span><br>
+        <span>94664-56285</span><br>
+        <div class="gst p0">
+          <span>NO. {{bill.bill_no}}</span>
+        </div>
+        <div class="risk">At Owner Risk</div>
+      </div> -->
+    </div>
+    <div class="row ft nb">
+      <div class="col-sm-5 p5">
+        <div class="row1">CONSIGNOR &nbsp;: <span>{{bill.consignor}}</span></div>
+        <div class="row1">CONSIGNEE &nbsp;&nbsp;: <span>{{bill.consignee}}</span></div>
+        <div class="row1">E-way Bill No. : <span>{{bill.e_bill_no}}</span></div>
+      </div>
+      <div class="col-sm-7 p5">
+        <!-- <div class="row1">VALUE OF GOODS : <span>{{bill.goods_value |  number:'2.0-0'}}</span></div>
+        <div class="row1">DATE : <span>{{bill.date | date}}</span></div> -->
+        <div class="row">
+        <div class="col-sm-6 caps">GSTIN No. : <span>{{bill.consignor_gstin}}</span></div>
+        <div class="col-sm-6 caps">DATE : <span>{{bill.created_at | date}}</span></div>
+        <div class="col-sm-6 caps">GSTIN No. : <span>{{bill.consignee_gstin}}</span></div>
+        <div class="col-sm-6 caps">FROM : <span>{{bill.from_place}}</span></div>
+        <div class="col-sm-6 caps">VALUE OF GOODS : <span>{{bill.goods_value |  number:'2.0-0'}}</span></div>
+        <div class="col-sm-6 caps">TO : <span>{{bill.to_place}}</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="row ft no-border">
+      <table class="service">
+        <tbody>
+          <tr class="header-tr">
+            <th>Pkgs.</th>
+            <th>Copy</th>
+            <th class="des">DESCRIPTION</th>
+            <th class="w8">ACTUAL WEIGHT</th>
+            <th class="w8">CHARGE WEIGHT</th>
+            <th class="rate">RATE</th>
+            <th class="w81"></th>
+            <th style="width:10%">To Pay
+            </th>
+            <th  style="width:10%">Paid</th>
+          </tr>
+          <tr *ngFor="let pkg of bill.packages;let i = index">
+            <td>{{pkg.pkg_qty}}</td>
+            <td *ngIf="i==0;else anothertd">{{bill.copy}}</td>
+            <td>{{(pkg.description.length>70)? (pkg.description | slice:0:70)+'..':(pkg.description)}} </td>
+            <td>{{pkg.actual_weight}} KG.</td>
+            <td>{{pkg.weight}} KG.</td>
+            <td>{{pkg.rate |  number:'2.0-0'}}</td>
+            <td *ngIf="i==0;else anothertd" style="padding-top: 15px;"> Freight<br>Gr Charge<br>St. Charge<br>Local Charge<br>D.D. charge<br>Prev. Freight</td>
+            <td *ngIf="i==0 && bill.type == 2;else anothertd" style="padding-top: 15px;">{{freight ? (freight |  number:'2.0-0') : 00.00 }}<br>{{bill.stationary_charges ? (bill.stationary_charges |  number:'2.0-0') : 00.00 }}<br>{{bill.st_charges ? (bill.st_charges |  number:'2.0-0') : 00.00 }}<br>{{bill.local_charges ? (bill.local_charges |  number:'2.0-0') : 00.00 }}<br>{{bill.dd_charges ? (bill.dd_charges |  number:'2.0-0') : 00.00 }}<br>{{bill.prev_freight ? (bill.prev_freight |  number:'2.0-0') : 00.00 }}</td>
+            <td *ngIf="i==0 && bill.type == 1;else anotherltd" style="padding-top: 15px;">{{freight ? (freight |  number:'2.0-0') : 00.00 }}<br>{{bill.stationary_charges ? (bill.stationary_charges |  number:'2.0-0') : 00.00 }}<br>{{bill.st_charges ? (bill.st_charges |  number:'2.0-0') : 00.00 }}<br>{{bill.local_charges ? (bill.local_charges |  number:'2.0-0') : 00.00 }}<br>{{bill.dd_charges ? (bill.dd_charges |  number:'2.0-0') : 00.00 }}<br>{{bill.prev_freight ? (bill.prev_freight |  number:'2.0-0') : 00.00 }}</td>
+            <!-- <td *ngIf="i==0;else anothertd" style="padding-top: 15px;">&nbsp;</td> -->
+            
+          </tr>
+          <ng-template #anothertd>
+            <td style="border-right: 1px solid black"></td>
+          </ng-template>
+          <ng-template #anotherltd>
+            <td *ngIf="i==0;else anothertd" style="padding-top: 15px;">&nbsp;</td>
+          </ng-template>
+          
+          <tr class="header-tr">
+            <td></td>
+            <td></td>
+            <td>P.M : <span>{{bill.pm}}</span><br>
+              IGST paid by : {{bill.igst_paid == 1 ? "Consignor" : "" }} {{bill.igst_paid == 2 ? "Consignee" : "" }} {{bill.igst_paid == 3 ? "Transport" : "" }} {{bill.igst_paid == 4 ? "Not Applicable" : "" }}
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="p1">Total:</td>
+            <td class="p1">{{bill.type == 2 ? (total_payment |  number:'2.0-0') : ''}}</td>
+            <td>{{bill.type == 1 ? (total_payment |  number:'2.0-0') : ''}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <div class="footer-div">
+        1. माल बगैर बिल्टी डिलीवरी होने पर कम्पनी जिम्मेवार नहीं होगी । 2. इस बिल्टी को संभाल के रखे , गुम होने पर अगर कोई भी माल की डिलीवरी ले जायेगा, कम्पनी जिम्मेवार नहीं होगी । 3. कम्पनी लीकेज , ब्रेकेज की जिम्मेवार नहीं होगी । 4. 1 सप्ताह बाद माल की कोई जिम्मेवार नहीं होगी । 1 महीने के बाद कोई क्लेम या इन्कवारी नहीं मिलेगी । 5. माल का क्लेम बिल्टी पर लिखी VALUE OF GOODS के हिसाब से दिया जायेगा । <br> DAILY PARCEL SERVICE DELHI, ROHTAK, PANIPAT, KARNAL, AMBALA, LUDHIANA, JALANDHAR, KARTARPUR, JANDIALAGURU, AMRITSAR & ALL PUNJAB
+      </div> -->
+      <div class="footer-div">
+      Important: The consignor is resposible for making over at this G. R. The rightful consignee & delivery at the goods to be the actual consignee. Note: The Beopari is responsible for illegal goods Weight and control. Sale Tax No. And Bill No. should be printed.<br>Received goods subject to terms and condition printed overleaf. Goods Booked at Owners Risk.
+      </div>
+    </div>
+    <span class="ft-span">वापसी माल की कंपनी 3 महीने के बाद जिम्मेवार नहीं होगी ।</span>
+   </div>
+  </div>  
+</div>
+

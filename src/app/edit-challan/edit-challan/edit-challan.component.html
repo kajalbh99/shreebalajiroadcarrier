@@ -1,0 +1,127 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
+<div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title"></h4>
+                        <!-- <div class="ml-auto text-right">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Add</li>
+                                </ol>
+                            </nav>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <form [formGroup]="myform" (ngSubmit)="onSubmit()" class="form-horizontal">
+                            	<div class="col-sm-4 floatL" >
+                                <div class="card-body">
+                                    <h4 class="card-title">Enter Details</h4>
+                                    <div class="form-group row">
+                                        <label for="lname" class="col-sm-4 text-right control-label col-form-label">Challan No<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input type="text" [readonly]= "true" formControlName="challan_no" required class="form-control" id="challan_no" placeholder="Challan No Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="truck_no" class="col-sm-4 text-right control-label col-form-label">Truck No.<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input formControlName="truck_no" required type="text" class="form-control" id="truck_no" placeholder="Truck No Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="truck_no" class="col-sm-4 text-right control-label col-form-label">Driver Name</label>
+                                        <div class="col-sm-6">
+                                            <input formControlName="driver_name" type="text" class="form-control" id="driver_name" placeholder="Truck No Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="lname" class="col-sm-4 text-right control-label col-form-label">Date<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <my-date-picker [placeholder]="placeholder" class="form__input" formControlName="date" [(ngModel)]="model" [options]="myDatePickerOptions" required></my-date-picker>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="cono1" class="col-sm-4 text-right control-label col-form-label">From<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                          <input formControlName="from" required type="text" class="form-control" id="from" placeholder="Place Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="email1" class="col-sm-4 text-right control-label col-form-label">To<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input type="text" formControlName="to" required class="form-control" id="to" placeholder="Place Here">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="email1" class="col-sm-4 text-right control-label col-form-label">Delivery Commision<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input type="text" formControlName="dly_comm" required class="form-control" id="dly_comm" placeholder="Delivery Commission Here">
+                                        </div>
+                                    </div>
+                                        <div class="form-group row">
+                                            <label for="email1" class="col-sm-4 text-right control-label col-form-label">Pay To Driver<span class="mandatory">*</span></label>
+                                            <div class="col-sm-6">
+                                                <input type="text" formControlName="drv_comm" required class="form-control" id="drv_comm" placeholder="Driver Pay Here">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="email1" class="col-sm-4 text-right control-label col-form-label">Delivery Address</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" formControlName="dlv_add" class="form-control" id="drv_comm" placeholder="Delivery Address Here">
+                                            </div>
+                                        </div>
+                                </div>
+                                </div>
+                               
+                                <div class="col-sm-6 floatL" >
+                                  <div class="card-body">
+                                    <div class="form-group row">
+                                      <label for="email1" class="col-sm-2 control-label col-form-label">Add Billti<span class="mandatory">*</span></label>
+                                      <div class="col-sm-6">
+                                        <tag-input (onRemove)="onItemRemoved($event)" (onAdd)="onItemAdded($event)" [placeholder]="'Type & Press Enter'" [secondaryPlaceholder]="'Type & Press Enter'"  [errorMessages]="errorMessages" [maxItems]='35' [ngModelOptions]="{standalone: true}" [(ngModel)]='items'></tag-input>
+                                        <span class="tag-msg">You Can Add only {{max_item}} Billties.</span>
+                                      </div>
+                                  </div>
+                                    <div class="card-body w text-right">
+                                        <button  [disabled]="!myform.valid" type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                    <div *ngIf="error" class="err">
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <strong>Error! </strong> {{error}}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="copyr">&copy; shreebalajiroadservice.in | <i class="fas fa-envelope"></i> dufferscreation@gmail.com |  <i style="transform: rotate(90deg);"class="fas fa-phone"></i>&nbsp;895-079-8100  </div>
+

@@ -1,0 +1,286 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
+<div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title"></h4>
+                        <div class="ml-auto text-right">
+                            <!-- <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Add</li>
+                                </ol>
+                            </nav> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <form [formGroup]="myform" (ngSubmit)="onSubmit()" class="form-horizontal">
+                            	<div class="col-sm-4 floatL" >
+                                <div class="card-body">
+                                    <h4 class="card-title">Enter Details</h4>
+                                    <div class="form-group row">
+                                        <label for="igst_paid" class="col-sm-4 text-right control-label col-form-label">Type</label>
+                                        <div class="col-sm-6">
+                                            <select formControlName="type"  class="form-control"  id="type">
+                                                <option value="1">Paid</option>
+                                                <option value="2">To Pay</option>
+                                              </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="igst_paid" class="col-sm-4 text-right control-label col-form-label">Copy</label>
+                                        <div class="col-sm-6">
+                                            <select formControlName="copy"  class="form-control"  id="copy">
+                                                <option value="Consignee">Consignee</option>
+                                                <option value="Driver">Driver</option>
+                                              </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="lname" class="col-sm-4 text-right control-label col-form-label">Billti No<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input [readonly]= "true" type="text" formControlName="bill_no" required class="form-control" id="bill_no" placeholder="Bill No Here">
+                                        </div>
+                                    </div>  
+                                    <div class="form-group row">
+                                        <label for="lname" class="col-sm-4 text-right control-label col-form-label">Invoice No<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input type="text" formControlName="invoice_no" required class="form-control" id="bill_no" placeholder="Invoice No Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="consignor" class="col-sm-4 text-right control-label col-form-label">Consignor<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input (keyup)="FetchItemDetailsSearch()" formControlName="consignor" required type="text" class="form-control" id="consignor" placeholder="Consignor Here">
+                                            <select formControlName="consignor_id" *ngIf="sel_consignor.length>0"  class="dd" name="Select1" size="6" (change)="onConsignorChange($event.target.value)">
+                                                <option value="">- Please select a name -</option>
+                                                <option *ngFor="let it of sel_consignor" value="{{it.id}}">{{it.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="gstin" class="col-sm-4 text-right control-label col-form-label">Consignor GSTIN<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input formControlName="consignor_gstin" requirerd type="text" class="form-control" id="consignee" placeholder="Consignor GSTIN Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="consignee" class="col-sm-4 text-right control-label col-form-label">Consignee<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input (keyup)="FetchItemDetailsSearch2()" formControlName="consignee" requirerd type="text" class="form-control" id="consignee" placeholder="Consignee Here">
+                                            <select formControlName="consignee_id" *ngIf="sel_consignee.length>0"  class="dd" name="Select2" size="6" (change)="onConsigneeChange($event.target.value)">
+                                                <option value="">- Please select a name -</option>
+                                                <option *ngFor="let it of sel_consignee" value="{{it.id}}">{{it.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="gstin" class="col-sm-4 text-right control-label col-form-label">Consignee GSTIN<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input formControlName="consignee_gstin" requirerd type="text" class="form-control" id="consignee" placeholder="Consignee GSTIN Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="lname" class="col-sm-4 text-right control-label col-form-label">E-Way Bill No</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" formControlName="e_bill_no" class="form-control" id="e_bill_no" placeholder="Bill No Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="lname" class="col-sm-4 text-right control-label col-form-label">Date<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <my-date-picker [placeholder]="placeholder" class="form__input" formControlName="date" [(ngModel)]="model" [options]="myDatePickerOptions" required></my-date-picker>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="cono1" class="col-sm-4 text-right control-label col-form-label">Goods Value<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input formControlName="goods_value" required type="text" class="form-control" id="goods_value" placeholder="Goods Value Here">
+                                        </div>
+                                    </div>                         
+                                    
+                                    <div class="form-group row">
+                                        <label for="igst_paid" class="col-sm-4 text-right control-label col-form-label">IGST Paid By</label>
+                                        <div class="col-sm-6">
+                                            <select formControlName="igst_paid"  class="form-control"  id="igst_paid">
+                                                <option value="1">Consignor</option>
+                                                <option value="2">Consignee</option>
+                                                <option value="3">Transport</option>
+                                                <option value="4">Not Applicable</option>
+                                              </select>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="card-body text-right">
+                                        <button  [disabled]="!myform.valid" type="submit" class="btn btn-primary">Submit</button>
+                                    </div> -->
+                                </div>
+                                </div>
+
+                                <div class="col-sm-4 floatL mt5">
+                                    <div class="form-group row">
+                                        <label for="cono1" class="col-sm-4 text-right control-label col-form-label">From<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                          <input formControlName="from" required type="text" class="form-control" id="from" placeholder="Place Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="email1" class="col-sm-4 text-right control-label col-form-label">To<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input type="text" formControlName="to" required class="form-control" id="to" placeholder="Place Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="email1" class="col-sm-4 text-right control-label col-form-label">P.M.<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input type="text" formControlName="pm" required
+                                             class="form-control" id="pm" placeholder="P.M. Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="cono1" class="col-sm-4 text-right control-label col-form-label">Gr. Charges</label>
+                                        <div class="col-sm-6">
+                                            <input formControlName="stationary" type="text" class="form-control" id="stationary" placeholder="Gr. Charges Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="cono1" class="col-sm-4 text-right control-label col-form-label">St. Charges<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input formControlName="st_charges" type="text" class="form-control" id="stationary" placeholder="St. Charges Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="cono1" class="col-sm-4 text-right control-label col-form-label">Local Charges<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input formControlName="local_charges" type="text" class="form-control" id="stationary" placeholder="Local Charges Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="cono1" class="col-sm-4 text-right control-label col-form-label">D. D. Charges<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input formControlName="dd_charges" type="text" class="form-control" id="stationary" placeholder="D. D. Charges Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="cono1" class="col-sm-4 text-right control-label col-form-label">Prev. Freight<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input formControlName="prev_freight" type="text" class="form-control" id="stationary" placeholder="Prev Freight Charges Here">
+                                        </div>
+                                    </div>
+                                </div>
+
+                    <!--Packages area-->
+                              
+                                <div class="col-sm-4 floatL" formArrayName="packages" margin-bottom>
+                                  <div class="card-body">
+                                  <h4 class="card-title">Enter Packages Details</h4>
+                                  <div [formGroupName]="i" *ngFor="let tech of myform.get('packages')['controls']; let i = index">
+                                    <div class="ticket-header">Package Detail #{{ i + 1 }}
+                                      <span class="close" *ngIf="myform.controls.packages.length > 1 && i > 0" (click)="removeInputField(i)">X</span>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="pkg_qty" class="col-sm-4 text-right control-label col-form-label">Package<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input formControlName="pkg_qty" type="text" class="form-control" id="pkg_qty" placeholder="Name Here">
+                                        </div>
+                                      </div>
+
+                                    <div class="form-group row">
+                                      <label for="cono1" class="col-sm-4 text-right control-label col-form-label">Name</label>
+                                      <div class="col-sm-6">
+                                          <input formControlName="name" type="text" class="form-control" id="name" placeholder="Name Here">
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="cono1" class="col-sm-4 text-right control-label col-form-label">HSN Code</label>
+                                        <div class="col-sm-6">
+                                            <input formControlName="hsn" type="text" class="form-control" id="hsn" placeholder="HSN Code Here">
+                                        </div>
+                                      </div>
+                                      
+                                    <div class="form-group row">
+                                      <label for="cono1" class="col-sm-4 text-right control-label col-form-label">Description<span class="mandatory">*</span></label>
+                                      <div class="col-sm-6">
+                                          <input formControlName="description" type="text" class="form-control" id="description" placeholder="Description Here">
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="cono1" class="col-sm-4 text-right control-label col-form-label">Actual Weight<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input formControlName="actual_weight" type="text" class="form-control" id="actual_weight" placeholder="Actual Weight Here">
+                                        </div>
+                                      </div>
+
+                                    <div class="form-group row">
+                                        <label for="cono1" class="col-sm-4 text-right control-label col-form-label">Charge Weight<span class="mandatory">*</span></label>
+                                        <div class="col-sm-6">
+                                            <input formControlName="weight" type="text" class="form-control" id="weight" placeholder="Weight Here">
+                                        </div>
+                                      </div>
+
+                                    <div class="form-group row">
+                                      <label for="rate" class="col-sm-4 text-right control-label col-form-label">Rate<span class="mandatory">*</span></label>
+                                      <div class="col-sm-6">
+                                          <input (focusout)="calF(i)" formControlName="rate" type="text" class="form-control" id="Rate" placeholder="Rate Here">
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                    <label for="total_freight" class="col-sm-4 text-right control-label col-form-label">Total Freight<span class="mandatory">*</span></label>
+                                    <div class="col-sm-6">
+                                        <input formControlName="total_freight" type="text" class="form-control" id="total_freight" placeholder="Total Freight Here">
+                                    </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                    <label for="paid_freight" class="col-sm-4 text-right control-label col-form-label">Paid Freight</label>
+                                    <div class="col-sm-6">
+                                        <input formControlName="paid_freight" type="text" class="form-control" id="paid_freight" placeholder="Paid Freight Here">
+                                    </div>
+                                    </div>
+                          
+                        
+                              </div>
+                            <span class="add-new" (click)="addNewInputField()">+ Add New Package</span>
+                            <div class="card-body text-right">
+                                <button  [disabled]="!myform.valid" type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                          </div>
+                        </div>
+                                              
+                        <div *ngIf="error" class="err">
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Error! </strong> {{error}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="copyr">&copy; shreebalajiroadservice.in | <i class="fas fa-envelope"></i> dufferscreation@gmail.com |  <i style="transform: rotate(90deg);"class="fas fa-phone"></i>&nbsp;895-079-8100  </div>
+

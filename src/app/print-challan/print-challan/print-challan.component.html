@@ -1,0 +1,116 @@
+<div id="content" #content>    
+  <div class="hand" >  
+    <input type="button" value="Download Pdf" (click)="captureScreen()"/>  
+  </div>    
+</div>
+<div id="contentToConvert">
+  <div class="div-wrap1">
+   <div class="header-wrap1">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h3 class="titel">SHREE BALAJI ROAD CARRIER</h3>
+        <h4>SWASTIKA ROAD, PIPAL WALI GALI</h4>
+        <h6>PANIPAT-HARYANA [06], Phones: 9996368787, 9466456285</h6>        
+      </div>
+      <div class="row tt">
+        <div class="col-sm-4 text-left">GSTIN : 06BDXPK2877A1ZA</div>
+        <div class="col-sm-4 text-center">DISPATCH CHALLAN</div>
+        <div class="col-sm-4 text-right">PAN : BDXPK2877A</div>
+      </div>
+      <div class="row tp">
+        <div class="col-sm-4">
+          <span>Challan No. :</span><span>&nbsp;&nbsp;&nbsp;{{challan?.challan_no}}</span><br>
+          <span>From :</span><span>&nbsp;&nbsp;&nbsp;{{challan?.from_place}}</span>
+        </div>
+        <div class="col-sm-4">
+          <span>Dated :</span><span>&nbsp;&nbsp;{{challan?.date | date}}</span><br>
+          <span>To :</span><span class="caps">&nbsp;&nbsp;&nbsp;{{challan?.to_place}}</span>
+        </div>
+        <div class="col-sm-4">
+          <span>Truck No :</span><span>&nbsp;&nbsp;&nbsp;{{challan?.truck_no}}</span><br>
+          <span>Driver Name :</span><span>&nbsp;&nbsp;&nbsp;</span>
+        </div>            
+      </div>
+      <table style="width: 98%;">
+        <tbody>
+          <tr>
+            <th style="width: 8%;">G.R. No.</th>
+            <th style="width: 9%;">P.M</th>
+            <th style="width: 5%;">PKGS</th>
+            <th style="text-align: center;">Consignee</th>
+            <th style="width: 9%;">HSN Code</th>
+            <th style="width: 7%;">Weight</th>
+            <th style="width: 9%;">To</th>
+            
+            
+            
+            <!-- <th style="width: 8%;">Cartage</th> -->
+            <!-- <th style="width: 7%;">Freight</th> -->
+           
+            <th style="width: 9%;">To Pay</th>
+            <th style="width: 9%;">Paid</th>
+            <th style="width: 8%;">Katt</th>
+            <th style="width: 8%;">PF</th>
+          </tr>
+          <tr *ngFor="let bill of bills;let i = index">
+            <td>{{bill.bill_no}}</td>
+            <td>{{bill.pm}}</td>
+            <td>{{bill.pkg_qty}}</td>
+            <td class="caps s">{{bill.consignee}}</td>
+            <td>{{bill.hsn_code}}</td>
+            <td>{{bill.weight}}</td>
+            <td class="caps">{{bill.to_place}}</td>
+            
+           
+            
+            <!-- <td>&nbsp;</td> -->
+            <!-- <td>{{bill.total_freight}}</td> -->
+            
+            <td>{{bill.total_freight}}</td>
+            <td>{{bill.final_paid_freight ?bill.final_paid_freight : '&nbsp;'}}</td>
+            <td>{{bill.katt != 0 ? bill.katt : '&nbsp;'}}</td>
+            <td>{{(bill.total_freight && bill.katt != 0 ) ? (bill.total_freight-bill.katt) : ''}}</td>
+          </tr>
+          <tr class="scnd">
+            <td style="text-align: center;" colspan="4">Total</td>
+            <td>{{challan?.final_pkg}}</td>
+            <td>{{challan?.final_weight}}</td>
+            <td>&nbsp;</td>
+            <td>{{challan?.final_freight}}</td>
+            
+            <td>{{challan?.total_paid_freight}}</td>
+            <td>{{challan?.total_katt}}</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td  colspan="7"> 
+              Total Billti : {{tb}}<br>
+              Note: <br><br>
+            Delivery At: 
+            </td>
+            <td colspan="4"> 
+              Topay Freight : {{challan?.final_freight}} <br>
+              Dly comm : {{challan?.dly_comm}} <br>
+              Less DD Charges :  <br>
+              Pay to Driver :{{challan?.drv_comm}} <br>
+              Credit in our account : {{challan?.final_freight - challan?.total_katt - challan?.dly_comm - challan?.drv_comm  }}<br>    
+            </td>
+          </tr>
+          <tr>
+            <td class="lastf-td" colspan="7">Driver Sign.</td>
+            <td class="lastl-td" colspan="4">For SHREEBALAJI ROAD CARRIER<br>MUKESH<br>Authorised Sign.</td>
+          </tr>
+          <tr>
+            <td class="last-td" colspan="11">
+              (1.) Responsibility for all risks during transit and safe delivery at final destination on lorry's Owner/Driver/Agent.
+              (2.) No unloading on sunday and any other holiday.
+              (3.) Goods are loaded in good and sound condition. 
+              (4.) Freight will be paid only after receiving the goods in the good condition at destination.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+   </div>
+  </div>
+</div>

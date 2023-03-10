@@ -1,0 +1,9 @@
+li.nav-item.hand {
+    color: #a1aab2;
+    border: 1px solid #a1aab2;
+    padding: 5px;
+    font-weight: 800;
+}
+.logout{
+    margin-right: 5%;
+}

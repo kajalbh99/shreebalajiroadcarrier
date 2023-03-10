@@ -1,0 +1,18 @@
+.add-new{
+    background: #27a9e3;
+    padding: 1%;
+    color: white;
+}
+.ticket-header{
+    text-align: center;
+    background: #e9ecef;
+    width: 83%;
+    padding: 1% 0;
+    margin-bottom: 5%;
+}
+.mt5{
+    margin-top: 5%;
+}
+.dd {
+    width: inherit;
+ }

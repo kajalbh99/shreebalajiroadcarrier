@@ -1,0 +1,257 @@
+#contentToConvert{
+    /*height: 1020px;*/
+    height: 520px;
+    width: 52%;
+}
+.pt5{
+    margin-top: 20px !important;
+}
+.lm{
+    margin-top: -6px;
+}
+.div-wrap
+{  
+    /* height: 500px; */
+    height: 498px;
+    border: 1px solid black;
+    margin: 1%;
+    color: black;
+    font-size: 12px;
+    width: 95%;
+    border-radius : 10px;
+    
+}
+.p5{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.heder{
+    
+    font-size: 13px;
+    font-weight: 600;
+}
+.heder2{
+    margin-top: -3%;
+}
+.f6{
+    font-weight: 600;
+}
+.p0{
+    padding:0;
+}
+.pl5{
+    padding-left: 5px;
+}
+.title-wrap{
+    /* width: 65%; */
+    padding: 3px 15px;
+}
+.title-wrap div{
+    /* width: 80%; */
+    /* text-align: center; */
+}
+.title-wrap span.title{
+    display: block;
+    padding: 0px 5px 0 5px;
+    border-radius: 10px;
+    color: black;
+    font-weight: 1000;
+    font-size: 27px;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+}
+.title-wrap span.com{
+    font-size: small;
+    font-family: cursive;
+    display: block;
+    text-align: center;
+}
+.ft{
+    font-size: 12px;
+    border: 1px solid;
+    margin-left: -6px;
+    margin-right: -6px;
+}
+.ft.no-border{
+    border:none;
+}
+.header-wrap{
+    padding: 5px ;
+    padding-top: 0;
+    font-weight: 700;
+}
+.l1 {
+    font-weight: 800;
+    font-size: 17px;
+}
+div.text-right {
+    font-size: 12px;
+    position: relative;
+}
+.service{
+    height: 220px;
+}
+.header-tr{
+    height: 20px;
+    border-top: 1px solid black;
+}
+.first-span{
+    border-bottom: 1px solid black;
+    display: block;
+    height: 20px;
+}
+.first-span.s{
+    border-bottom: none;
+}
+.footer-div{
+    padding: 0px 10px;
+}
+.space{
+    margin-left:3%;
+}
+.space-2{
+    margin-left:3%;
+}
+.space1{
+    margin-left:30%;
+}
+.gst{
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px;
+}
+img{
+    height: 25%;
+    position: absolute;
+    top: 45%;
+    right: 38%;
+}
+.t1{
+    height: 70%;
+    position: absolute;
+    top: 25%;
+    right: 17%;
+}
+span.space-3 {
+    margin-left: 5%;
+}
+.p0{
+    padding-bottom: 0;
+}
+.p1{
+    padding:0;
+}
+.frgt{
+    /* padding: 0 12% */
+}
+.row1 span{
+    margin-left: 2%;
+    text-transform: capitalize;
+}
+.first-span.s span{
+    margin-left: 6%;
+    border-left: 1px solid black;
+    padding-left: 1px;
+}
+.tt {
+    margin-top: -22px;
+}
+.caps{
+    text-transform: uppercase;
+}
+span.first-span.n {
+    border: none;
+}
+.floatR
+{
+    float: right;
+}
+.jud{
+    text-align: center;
+    display: block;
+}
+.des{
+    width: 30%;
+}
+.w81{
+    width: 11%;
+}
+.rate{
+    width: 8%;
+}
+i.fa.fa-check {
+    padding-left: 5px;
+}
+.w8{
+    width: 8%;
+}
+.div-wrap1
+{  
+    height: 1200px;   
+    margin: 1% 1% 0 1%;
+    color: black;
+    font-size: 15px;
+    width: 50%;
+    
+}
+table{
+    width: 100%;
+    border: 1px solid black;
+}
+/* th,td{
+    border: 1px solid black;
+} */
+
+th{
+    border: 1px solid black;
+}
+td{
+    border-left: 1px solid black;
+    padding-left: 5px;
+    text-transform: capitalize;
+}
+
+.nb{
+
+}
+span.ft-span {
+    display: block;
+    padding: 5px 5px;
+    font-size: 20px;
+}
+.risk{
+        font-size: 15px;
+        font-weight: 800;
+    }
+/* Use Media Query to add a breakpoint at 1432px: */
+@media screen and (max-width:1430px) {
+    .title-wrap span.title{
+        font-size: 19px;
+    }
+    .gst{
+        font-size: 12px;
+    }
+    .footer-div {
+        padding: 4px 10px;
+    }
+  }
+
+  @media screen and (max-width:1430px) {
+    .title-wrap span.title{
+        font-size: 14px;
+    }
+    .div-wrap{
+        height: 508px;
+    }
+    .footer-div {
+        padding: 0px 10px;
+    }
+  }
+  @media screen and (max-width:1350px) {
+    .space{
+        margin-left: 20px;
+    }
+    .space1{
+        margin-left: 100px;
+    }
+  }

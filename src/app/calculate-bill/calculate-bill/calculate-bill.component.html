@@ -1,0 +1,151 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
+<div class="page-wrapper">
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title"></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                          <div class="row selection-div">
+                            <div (click)="switch(1)" class="col-sm-4 hand" [ngClass]="{'active': active == 1 }"  >
+                              Monthly Records
+                            </div> 
+                            <div  (click)="switch(2)" class="col-sm-4 hand" [ngClass]="{'active': active == 2 }" >
+                              Yearly Records
+                            </div>
+                            <div  (click)="switch(3)" class="col-sm-4 hand" [ngClass]="{'active': active == 3 }" >
+                              Year-Year Records
+                            </div>
+                          </div>
+
+                            <form *ngIf="active==1" class="form-horizontal">
+                            	<div class="col-sm-4 floatL" >
+                                <div class="card-body">
+                                    <h4 class="card-title">Enter Details</h4>
+                                    <div class="form-group row">
+                                        <label for="lname" class="col-sm-4 text-right control-label col-form-label">Destination</label>
+                                        <div class="col-sm-6">
+                                            <input [ngModelOptions]="{standalone: true}" [(ngModel)]="destination" type="text" class="form-control" id="des" placeholder="Destination Place Here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label for="lname" class="col-sm-4 text-right control-label col-form-label">Monthly Record</label>
+                                      <div class="col-sm-6">
+                                          <input  [ngModelOptions]="{standalone: true}" [(ngModel)]="monthyear" (focus)="toggle()" type="text" class="form-control" id="des" placeholder="Click">
+                                      </div>
+                                  </div>
+                                    <div [hidden]="showCalender">
+                                       <monthpicker (change)="onChange($event)" [locale]="'en'"></monthpicker>
+                                    </div>
+                                </div>
+                                <div (click)="onSubmit(1)" class="card-body w text-right">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                                </div>
+                                <div *ngIf="total_freight" class="col-sm-4 floatL result" >
+                                    <div class="card-body">
+                                        <h4 class="card-title">Total Freight Collected : {{total_freight | currency : 'INR' }}</h4>
+                                    </div>
+                                </div>
+                                <div *ngIf="error" class="err">
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Error! </strong> {{error}}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                </div>
+                              </form>
+
+                              <!--Second Switch-->
+                              <form *ngIf="active==2" class="form-horizontal">
+                                <div class="col-sm-4 floatL" >
+                                  <div class="card-body">
+                                      <h4 class="card-title">Enter Details</h4>
+                                      <div class="form-group row">
+                                          <label for="lname" class="col-sm-4 text-right control-label col-form-label">Destination</label>
+                                          <div class="col-sm-6">
+                                              <input [ngModelOptions]="{standalone: true}" [(ngModel)]="destination" type="text" class="form-control" id="des" placeholder="Destination Place Here">
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <label for="lname" class="col-sm-4 text-right control-label col-form-label">Year</label>
+                                        <div class="col-sm-6">
+                                            <input  [ngModelOptions]="{standalone: true}" [(ngModel)]="year" type="text" class="form-control" id="des" placeholder="Ex : 2020">
+                                        </div>
+                                    </div>
+                                  </div>
+                                  <div (click)="onSubmit(2)" class="card-body w text-right">
+                                      <button type="submit" class="btn btn-primary">Submit</button>
+                                  </div>
+                                  </div>
+                                  <div *ngIf="total_freight" class="col-sm-4 floatL result" >
+                                    <div class="card-body">
+                                        <h4 class="card-title">Total Freight Collected : {{total_freight | currency : 'INR'}}</h4>
+                                    </div>
+                                </div>
+                                  <div *ngIf="error" class="err">
+                                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                      <strong>Error! </strong> {{error}}
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  </div>
+                                </form>
+
+                                <!--Third Switch-->
+                              <form *ngIf="active==3" class="form-horizontal">
+                                <div class="col-sm-4 floatL" >
+                                  <div class="card-body">
+                                      <h4 class="card-title">Enter Details</h4>
+                                      <div class="form-group row">
+                                          <label for="lname" class="col-sm-4 text-right control-label col-form-label">Destination</label>
+                                          <div class="col-sm-6">
+                                              <input [ngModelOptions]="{standalone: true}" [(ngModel)]="destination" type="text" class="form-control" id="des" placeholder="Destination Place Here">
+                                          </div>
+                                      </div>
+                                      <div class="form-group row">
+                                        <label for="lname" class="col-sm-4 text-right control-label col-form-label">Start Year</label>
+                                        <div class="col-sm-6">
+                                            <input  [ngModelOptions]="{standalone: true}" [(ngModel)]="startYear" type="text" class="form-control" id="des" placeholder="Ex : 2020">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label for="lname" class="col-sm-4 text-right control-label col-form-label">End Year</label>
+                                      <div class="col-sm-6">
+                                          <input  [ngModelOptions]="{standalone: true}" [(ngModel)]="endYear" type="text" class="form-control" id="des" placeholder="Ex : 2020">
+                                      </div>
+                                  </div>
+                                  </div>
+                                  <div (click)="onSubmit(3)" class="card-body w text-right">
+                                      <button type="submit" class="btn btn-primary">Submit</button>
+                                  </div>
+                                  </div>
+                                  <div *ngIf="total_freight" class="col-sm-4 floatL result" >
+                                    <div class="card-body">
+                                        <h4 class="card-title">Total Freight Collected : {{total_freight | currency : 'INR'}}</h4>
+                                    </div>
+                                </div>
+                                  <div *ngIf="error" class="err">
+                                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                      <strong>Error! </strong> {{error}}
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  </div>
+                                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="copyr">&copy; shreebalajiroadservice.in | <i class="fas fa-envelope"></i> dufferscreation@gmail.com |  <i style="transform: rotate(90deg);"class="fas fa-phone"></i>&nbsp;895-079-8100  </div>
+

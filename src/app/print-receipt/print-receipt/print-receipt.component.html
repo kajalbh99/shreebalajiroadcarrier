@@ -1,0 +1,81 @@
+
+<div id="content" #content>    
+  <div class="hand" >  
+    <input type="button" value="Download" (click)="captureScreen()"/>  
+  </div>    
+</div>
+<div id="contentToConvert">
+  <div class="div-wrap">
+   <div class="row">
+     <div class="col-sm-12 text-center">
+      <span>Delivery Freight Receipt</span>
+     </div>
+   </div>
+     <div class="row header">
+       <div class="col-sm-12 text-center">
+          Shree Balaji Road Service
+       </div>
+     </div>
+     <div class="row sub-header">
+       <div class="col-sm-12 text-center">
+         Shed 2, Sawastika Road, Opp. Devendra Dhaba, Pipal Wali Gali<br>
+         Panipat-132103, Ph.: 99963-68787, 94664-56285
+       </div>
+     </div>
+     <div class="row">
+       <div class="col-sm-4">
+        No. {{receipt.receipt_no}}
+       </div>
+       <div class="col-sm-4"></div>
+       <div class="col-sm-4 text-right">
+         Dated : {{receipt.receipt_date|date}}
+      </div>
+      <div class="col-sm-12">
+        Received with thanks from M/s. <span><span>&nbsp;&nbsp;{{receipt.received_from}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+      </div>
+     </div>
+     <div class="row main-section">
+      <div class="col-sm-5 rb">
+        <span>G. R. No. : <span>&nbsp;{{receipt.gr_no}}&nbsp;&nbsp;&nbsp;</span></span><br>
+        <span>No. of Pkgs. : <span>&nbsp;{{receipt.pkgs}}&nbsp;&nbsp;&nbsp;</span></span><br>
+        <span>Contents : <span>&nbsp;{{receipt.packing}}&nbsp;&nbsp;&nbsp;</span></span><br>
+        <span>Station From : <span>&nbsp;{{receipt.station_from}}&nbsp;&nbsp;&nbsp;</span></span><br>
+        <span>Private Mark : <span>&nbsp;{{receipt.private_mark}}&nbsp;&nbsp;&nbsp;</span></span>
+      </div>
+      <div class="col-sm-4 rb p0">
+        <span class="bb nb">&nbsp;</span>
+        <span class="bb">To Pay</span>
+        <span class="bb">Hamali</span>
+        <span class="bb">D/ Com</span>
+        <span class="bb">Door Delivery</span>
+        <span class="bb">Damrge</span>
+        <span class="bb">GST@_____%</span>
+        <span class="bb nb">TOTAL</span>
+      </div>
+      <div class="col-sm-3 p0">
+        <span class="bb">Rupees.</span>
+        <span class="bb">{{receipt.frieght}}</span>
+        <span class="bb">{{receipt.hamali}}</span>
+        <span class="bb">{{receipt.d_charges}}</span>
+        <span class="bb">{{receipt.demmurage}}</span>
+        <span class="bb">{{receipt.cf_charges}}</span>
+        <span class="bb">&nbsp;</span>
+        <span class="bb nb text-left">{{receipt.total}}</span>
+      </div>
+     </div>
+    <div class="row footer-div">
+      <div class="col-sm-6">
+      <span class="rs">
+        Rs. <span>{{receipt.rupees}}</span>
+      </span>
+      </div>
+      <div class="col-sm-6 text-right">
+        <div class="ftw7">
+          Shree Balaji Road Carrier
+        </div><br>
+        <span>Delivery Incharge</span>
+      </div>
+    </div>
+  </div>  
+</div>
+

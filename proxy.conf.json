@@ -1,6 +1,14 @@
+<<<<<<< Updated upstream
 {
     "/api": {
       "target": "http://localhost",
       "secure": false
     }
+=======
+{
+    "/api": {
+      "target": "http://localhost",
+      "secure": false
+    }
+>>>>>>> Stashed changes
   }
